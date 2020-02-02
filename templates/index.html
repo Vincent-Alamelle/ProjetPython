@@ -1,0 +1,19 @@
+{%  extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}*
+    {% if user.is_authenticated %}
+        <h1>Home</h1>
+        Hi {{ user.username }}!
+        <a href="{% url 'app_cocktail_list' %}">Cocktail's List</a>
+        <p><a href="{% url 'logout' %}">Logout</a></p>
+
+    {% else %}
+        <p>You are not logged in</p>
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'app_register_user' %}">Register</a>
+        <p><a href="{% url 'password_reset' %}">Forgotten password</a></p>
+    {% endif %}
+{% endblock %}
